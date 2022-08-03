@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { VERSION } from '@angular/platform-browser-dynamic';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +7,4 @@ import { VERSION } from '@angular/platform-browser-dynamic';
 })
 export class AppComponent {
   title = 'header-app';
-  version = VERSION;
 }
