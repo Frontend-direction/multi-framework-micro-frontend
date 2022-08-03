@@ -6,7 +6,7 @@
    
     <div class="container bs-docs-container">
       <div class="row">
-        <div class="col-xs-6 col-md-3" v-for="app in [1,2,3, 4, 5, 6, 7, 8, 9]" :key="app">
+        <div class="col-xs-6 col-md-3" v-for="app in [1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="app">
           <div class="thumbnail">
             
           <svg width="100%" height="200">
