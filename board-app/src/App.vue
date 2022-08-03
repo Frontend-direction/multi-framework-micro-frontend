@@ -8,7 +8,13 @@
       <div class="row">
         <div class="col-xs-6 col-md-3" v-for="app in [1,2,3, 4, 5, 6, 7, 8, 9]" :key="app">
           <div class="thumbnail">
-            <img :src="cardImg" alt="...">
+            
+          <svg width="100%" height="200">
+            <rect x="0" y="0" rx="0" ry="0" width="100%" height="200px"
+            style="fill:#EEEEEE;" />
+            <text x="40%" y="50%">319 X 180</text>
+          </svg>
+
             <div class="caption">
               <h3>New Micro frontend app</h3>
               <p>Some fancy description</p>
@@ -31,7 +37,6 @@ export default {
   data() {
     return {
       version: '3.2.13',
-      cardImg: require('./assets/card.svg')
     }
   }
 }
