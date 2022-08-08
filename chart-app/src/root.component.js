@@ -1,87 +1,47 @@
+import { useEffect, useRef } from 'react';
+
 export default function Root(props) {
+  const pieChart = useRef(null);
+
   const version = "17.0.2";
 
+  let sectionStyles = {
+    height: '70vh',
+    display: 'flex',
+    'flex-direction': 'column',
+    'justify-content': 'center',
+    'align-items': 'center'
+  }
+  const circleStyles = {
+    fill: '#ddd',
+    stroke: '#337ab7',
+    strokeWidth: '400',
+    'stroke-dasharray': '0 1257',
+    transition: 'stroke-dasharray 3s ease',
+  }
+  const svgStyle = {
+    margin: '0 auto',
+    transform: 'rotate(-90deg)',
+    background: '#ddd',
+    borderRadius: '50%',
+    display: 'block'
+  }
+  
+  let percentage = 70;
+  let total = 1257;
+
+  useEffect(() => {
+    let result = ((percentage * total) / 100);
+
+    pieChart.current.style.strokeDasharray = result;
+  }, []);
+
   return (
-    <section>
-      <div
-        style={{
-          "margin-bottom": "5rem",
-          "margin-top": "2rem",
-          "text-align": "center",
-        }}
-      >
-        <span class="label label-primary">React v {version}</span>
-      </div>
-      <div style={{ display: "flex" }}>
-        <div style={{ width: "400px" }}>
-          Line Chart
-          <svg viewBox="0 0 500 100" class="chart">
-            <polyline
-              fill="none"
-              stroke="#0074d9"
-              stroke-width="2"
-              points="
-                00,120
-                20,60
-                40,80
-                60,20
-                80,80
-                100,80
-                120,60
-                140,100
-                160,90
-                180,80
-                200, 110
-                220, 10
-                240, 70
-                260, 100
-                280, 100
-                300, 40
-                320, 0
-                340, 100
-                360, 100
-                380, 120
-                400, 60
-                420, 70
-                440, 80
-              "
-            />
-          </svg>
-        </div>
-        <div style={{ width: "400px" }}>
-          Bar Chart
-          <svg
-            class="chart"
-            width="420"
-            height="150"
-            aria-labelledby="title desc"
-            role="img"
-          >
-            <title id="title">A bar chart showing information</title>
-            <desc id="desc">4 apples; 8 bananas; 15 kiwis; 16 oranges; 23 lemons</desc>
-            <g class="bar">
-              <rect width="40" height="19"></rect>
-              <text x="45" y="9.5" dy=".35em">4 apples</text>
-            </g>
-            <g class="bar">
-              <rect width="80" height="19" y="20"></rect>
-              <text x="85" y="28" dy=".35em">8 bananas</text>
-            </g>
-            <g class="bar">
-              <rect width="150" height="19" y="40"></rect>
-              <text x="150" y="48" dy=".35em">15 kiwis</text>
-            </g>
-            <g class="bar">
-              <rect width="160" height="19" y="60"></rect>
-              <text x="161" y="68" dy=".35em">16 oranges</text>
-            </g>
-            <g class="bar">
-              <rect width="230" height="19" y="80"></rect>
-              <text x="235" y="88" dy=".35em">23 lemons</text>
-            </g>
-          </svg>
-        </div>
-      </div>
+    <section style={sectionStyles}>
+      <h1>Pie chart</h1>
+      <svg width="400" height="400" class="chart" style={svgStyle}>
+        <circle ref={pieChart} r="200" cx="50%" cy="50%" class="pie" style={circleStyles} />
+      </svg>
     </section>
   );
 }
